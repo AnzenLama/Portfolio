@@ -1,3 +1,6 @@
+/* ============================
+   GLOBAL VARIABLES
+============================ */
 :root {
   --bg: #f3f6f9;
   --text: #1e293b;
@@ -13,7 +16,7 @@
   --font: 'Poppins', sans-serif;
 }
 
-/* DARK MODE ACTIVE */
+/* DARK MODE */
 body.dark {
   --bg: var(--dark-bg);
   --text: var(--dark-text);
@@ -21,7 +24,9 @@ body.dark {
   --accent: #60a5fa;
 }
 
-/* RESET */
+/* ============================
+   BASE STYLE
+============================ */
 body {
   margin: 0;
   font-family: var(--font);
@@ -36,29 +41,28 @@ body {
   padding: 1.5rem;
 }
 
-/* GLASS EFFECT */
-.glass {
-  backdrop-filter: blur(14px);
-  background: rgba(255, 255, 255, 0.15);
-  border: 1px solid rgba(255,255,255,0.25);
-  border-radius: 14px;
-}
-
-/* NAVBAR */
+/* ============================
+   NAVBAR
+============================ */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   padding: 1rem 2rem;
+  background: #0f172a;   /* Solid dark, always readable */
+  color: white;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+
   position: sticky;
   top: 0;
-  z-index: 50;
+  z-index: 100;
 }
 
 .logo {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
 
 .logo img {
@@ -80,8 +84,8 @@ body {
 
 .nav-links a {
   text-decoration: none;
-  color: var(--white);
   font-weight: 500;
+  color: white;
   transition: 0.3s;
 }
 
@@ -95,22 +99,43 @@ body {
   gap: 1.2rem;
 }
 
+/* Dark Mode Button */
 .theme-toggle {
-  font-size: 1.3rem;
-  background: none;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
   border: none;
-  color: var(--white);
   cursor: pointer;
+
+  background: rgba(255,255,255,0.15);
+  color: white;
+  font-size: 1.2rem;
+  transition: 0.3s ease;
 }
 
-/* HAMBURGER (MOBILE) */
+.theme-toggle:hover {
+  background: rgba(255,255,255,0.3);
+  transform: scale(1.1);
+}
+
+/* GitHub icon */
+.github-logo img {
+  width: 26px;
+  height: 26px;
+  filter: invert(1); /* White icon */
+}
+
+/* Hamburger icon - mobile */
 .hamburger {
   display: none;
-  font-size: 1.8rem;
   cursor: pointer;
+  font-size: 1.8rem;
+  color: white;
 }
 
-/* HERO */
+/* ============================
+   HERO SECTION
+============================ */
 .hero {
   text-align: center;
   padding: 5rem 1.5rem;
@@ -134,17 +159,43 @@ body {
 }
 
 .btn-primary:hover {
-  transform: translateY(-3px);
   background: #2563eb;
+  transform: translateY(-3px);
 }
 
 .profile-image img {
-  width: 250px;
+  width: 240px;
   border-radius: 18px;
   margin-top: 2rem;
 }
 
-/* CARDS */
+/* ============================
+   ABOUT
+============================ */
+.about {
+  max-width: 750px;
+  margin: 2rem auto 0;
+  padding: 1.5rem;
+  background: rgba(255,255,255,0.3);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+}
+
+body.dark .about {
+  background: rgba(255,255,255,0.05);
+}
+
+/* ============================
+   EXPERIENCE + CERTIFICATIONS
+============================ */
+.skills,
+.cert-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+  gap: 1.2rem;
+  margin-top: 1.5rem;
+}
+
 .card {
   padding: 1.3rem;
   background: var(--white);
@@ -159,25 +210,31 @@ body.dark .card {
 
 .card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
 }
 
-/* EXPERIENCE */
-.skills, .cert-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
-  gap: 1.2rem;
-  margin-top: 1.5rem;
+/* ============================
+   CONTACT
+============================ */
+.contact {
+  text-align: center;
+  padding: 3rem 1.5rem;
 }
 
-/* FOOTER */
+/* ============================
+   FOOTER
+============================ */
 .footer {
   text-align: center;
   padding: 1rem;
   margin-top: 3rem;
+  background: rgba(255,255,255,0.2);
+  backdrop-filter: blur(12px);
 }
 
-/* REVEAL ANIMATION */
+/* ============================
+   SCROLL REVEAL
+============================ */
 .fade-in {
   opacity: 0;
   transform: translateY(20px);
@@ -189,19 +246,28 @@ body.dark .card {
   transform: translateY(0);
 }
 
-/* RESPONSIVE */
+/* ============================
+   MOBILE RESPONSIVE
+============================ */
 @media (max-width: 768px) {
-  .hamburger { display: block; }
-  .nav-links { display: none; }
+  .hamburger {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+  }
 
   .nav-links.active {
     display: block;
     position: absolute;
     right: 20px;
-    top: 60px;
-    background: rgba(0,0,0,0.6);
-    padding: 1rem;
+    top: 70px;
+
+    background: #1e293b;
+    padding: 1.2rem;
     border-radius: 10px;
+    z-index: 999;
   }
 
   .nav-links ul {
