@@ -1,11 +1,19 @@
-// THEME TOGGLE
+/* ============================
+   DARK MODE TOGGLE
+============================ */
 const themeToggle = document.getElementById("themeToggle");
+
 themeToggle.addEventListener("click", () => {
   document.body.classList.toggle("dark");
-  themeToggle.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
+
+  // Toggle icon
+  const isDark = document.body.classList.contains("dark");
+  themeToggle.textContent = isDark ? "☀️" : "🌙";
 });
 
-// MOBILE MENU
+/* ============================
+   MOBILE MENU TOGGLE
+============================ */
 const hamburger = document.getElementById("hamburger");
 const navLinks = document.querySelector(".nav-links");
 
@@ -13,13 +21,15 @@ hamburger.addEventListener("click", () => {
   navLinks.classList.toggle("active");
 });
 
-// SCROLL REVEAL
+/* ============================
+   SCROLL REVEAL EFFECT
+============================ */
 const revealElements = document.querySelectorAll(".fade-in");
 
 const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.classList.add("visible");
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("visible");
     }
   });
 }, { threshold: 0.3 });
